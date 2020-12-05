@@ -1,38 +1,32 @@
 package commands;
 
 import Agency.Agency;
-import system.AgencySystem;
 import user.Bookkeeper;
 import user.Customer;
 import user.User;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public abstract class Register {
-    public static void register(){
+    public static void register(String who) {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Scanner in = new Scanner(System.in);
 
         String name = "";
         String password = "";
-        String email ="";
-        String nextcommand = "";
+        String email = "";
         int bday = 0;
         int bmonth = 0;
         int byear = 0;
+        int balance = 0;
 
         try {
-            while (!(nextcommand.equals("customer") || nextcommand.equals("bookkeper"))){
-                System.out.println("customer or bookkeper ?");
-                nextcommand = reader.readLine();
-            }
 
             System.out.println("Insert name: ");
-            name =reader.readLine();
+            name = reader.readLine();
 
             System.out.println("Insert password: ");
             password = reader.readLine();
@@ -49,18 +43,21 @@ public abstract class Register {
             System.out.println("Insert birth year: ");
             byear = in.nextInt();
 
-        }
-        catch (IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
         User newUser = null;
-        if(nextcommand.equals("customer")){
+        if (who.equals("customer")) {
             newUser = new Customer(name, password, email, bday, bmonth, byear);
             Agency.RegisterUser(newUser);
+            System.out.println("Customer "+name+" was register!");
         }
-        if(nextcommand.equals("bookkeper")){
+        if (who.equals("bookkeeper")) {
             newUser = new Bookkeeper(name, password, email, bday, bmonth, byear);
             Agency.RegisterUser(newUser);
+            System.out.println("Bookkeeper "+name+" was hired!");
         }
 
     }

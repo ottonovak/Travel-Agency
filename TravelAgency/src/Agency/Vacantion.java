@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Vacantion {
     protected String Name;
-    protected int Price;
+    final protected int Price;
     protected String Location;
     protected int DateDay;
     protected int DateMonth;
@@ -28,24 +28,26 @@ public class Vacantion {
     }
 
     public static void showPV(ArrayList<Vacantion> arrayListOfPurchasedVacantions) {
-
-
-            //podmieku ci vobec mam vacntiony kupene
-
-            for(Vacantion vacantion : arrayListOfPurchasedVacantions) {
-                System.out.println("Name:" + vacantion.Name);
-                System.out.println("Price: " + vacantion.Price);
-                System.out.println("Location: " + vacantion.Location);
-                System.out.println("Date: " + vacantion.DateDay + "." + vacantion.DateMonth + "." + vacantion.DateYear);
-                System.out.println("Duration: " + vacantion.Duration + " days\n");
-            }
+        for (Vacantion vacantion : arrayListOfPurchasedVacantions) {
+            displayOneVacantion(vacantion);
+        }
     }
 
+    public static void displayOneVacantion(Vacantion vacantion) {
+        System.out.println("Name:" + vacantion.Name);
+        System.out.println("Price: " + vacantion.Price);
+        System.out.println("Location: " + vacantion.Location);
+        System.out.println("Date: " + vacantion.DateDay + "." + vacantion.DateMonth + "." + vacantion.DateYear);
+        System.out.println("Duration: " + vacantion.Duration + " days\n");
+    }
 
-    public  String getName(){
+    public int getPrice() {
+        return this.Price;
+    }
+
+    public String getName() {
         return this.Name;
     }
-
 
 
 }
