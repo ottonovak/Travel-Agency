@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-final public class Manager extends Employee implements UserInterface {
+final public class Manager extends Employee implements UserInterface, EmployeeInterface{
 
     public Manager(String name, String password, String email, int bday, int bmonth, int byear) {
         super(name, password, email, bday, bmonth, byear);
@@ -32,7 +32,7 @@ final public class Manager extends Employee implements UserInterface {
         System.out.println("Birth day: " + this.BDay + "." + this.BMonth + "." + this.BYear);
     }
     @Override
-    public void giveBonusPoints() throws IOException {
+    public void giveBonusPoints(){
         int points = 0;
 
         Scanner in = new Scanner(System.in);
@@ -44,7 +44,7 @@ final public class Manager extends Employee implements UserInterface {
                 ((Customer) user).addBPoints(points);
             }
         }
-        System.out.println("You successively give "+points+" points to all users!");
+        System.out.println("You successively gived "+points+" points to all users!");
     }
 
 

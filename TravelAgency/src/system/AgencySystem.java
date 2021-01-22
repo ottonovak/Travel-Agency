@@ -5,7 +5,9 @@ import Agency.Vacantion;
 import commands.*;
 import user.*;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public abstract class AgencySystem {
@@ -141,8 +143,17 @@ public abstract class AgencySystem {
     }
 
     public static void giveBonusPoints() throws IOException {
-        if (CurrentUser instanceof Manager)
-            ((Manager) CurrentUser).giveBonusPoints();
+        if (CurrentUser instanceof Manager) {
+            String   toWho= "";
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+            System.out.println("You want to give all customers or to a specific customer?");
+            toWho = reader.readLine();
+            if (toWho.equals("all"))
+                ((Manager) CurrentUser).giveBonusPoints();
+            else
+                ((Employee) CurrentUser).giveBonusPoints();
+        }
         else
             if (CurrentUser instanceof Employee)
                 ((Employee) CurrentUser).giveBonusPoints();

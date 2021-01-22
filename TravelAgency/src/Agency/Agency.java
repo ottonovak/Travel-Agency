@@ -39,10 +39,9 @@ public abstract class Agency {
 
 
     public static void displayVacantions() {
-        for (Vacantion vacantion : Agency.ListOfVacantions) {
-            System.out.println("Available vacations:");
+        System.out.println("Available vacations:");
+        for (Vacantion vacantion : Agency.ListOfVacantions)
             displayOneVacantion(vacantion);
-        }
     }
 
     public static void RegisterUser(User newUser) {
